@@ -42,7 +42,7 @@ public class TextEditor extends JFrame implements SaveLoadListener {
         BorderFactory.setMargin(scrollableTextArea, 10, 10, 10, 10);
         add(scrollableTextArea, BorderLayout.CENTER);
         SaveLoadControl fileSelection = new SaveLoadControl();
-        fileSelection.addSaveLoadListener(this);                  //this links Text editor and fileSelection panel
+        fileSelection.addSaveLoadListener(this);         //this links Text editor and fileSelection panel, so that TextEditor can "hear" what buttons were clicked on fileSelection panel 
         BorderFactory.setMargin(fileSelection, 5, 0, 0, 5);
         add(fileSelection, BorderLayout.NORTH);
         setVisible(true);
@@ -89,7 +89,7 @@ public class TextEditor extends JFrame implements SaveLoadListener {
 }
  
  
-//class to make borders for JPanels and other stuff  
+//class to make borders for JPanels and other stuff  with nessesarry spaces 
 
 class BorderFactory {
     public static void setMargin(JComponent component, int top, int right, int bottom, int left) {
@@ -141,6 +141,7 @@ class SaveLoadControl extends JPanel {
                 e.printStackTrace();
             }
         });
+       //^method to do something when button is pressed (load to file )
         this.add(fileNameField);
         this.add(saveButton);
         this.add(loadButton);
@@ -159,7 +160,7 @@ class SaveLoadControl extends JPanel {
         if (fileName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "File name is empty!");    //shows message box if file name field is empty
         } else {
-            for (SaveLoadListener listener : buttonListeners) {           // goes through all the listeners and notifies them that load button is pressed
+            for (SaveLoadListener listener : buttonListeners) {           // goes through all the listeners and notifies them to load file from fileName
                 listener.onClick(fileName, SaveLoadListener.Actions.LOAD_FILE);
             }
         }
@@ -170,7 +171,7 @@ class SaveLoadControl extends JPanel {
         if (fileName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "File name is empty!");  //shows message box if file name field is empty
         } else
-            for (SaveLoadListener listener : buttonListeners)           // goes through all the listeners and notifies them that load button is pressed
+            for (SaveLoadListener listener : buttonListeners)           // goes through all the listeners and notifies them to save file to fileName
                 listener.onClick(fileName, SaveLoadListener.Actions.SAVE_FILE);
             }
     }
