@@ -23,7 +23,7 @@ interface SaveLoadListener {
     void onClick(String fileName, final Actions action) throws IOException; 
 }
 
-//class which implents SaveLoadListener can react to actions of observed object (in this case it's SaveLoadControl fileSelection).
+//class which implements SaveLoadListener can react to actions of observed object (in this case it's SaveLoadControl fileSelection).
 
  
 public class TextEditor extends JFrame implements SaveLoadListener { 
