@@ -68,7 +68,7 @@ public class TextEditor extends JFrame implements SaveLoadListener {
     }
     
     
-    //auxilary methods to save/load text
+    //auxilary methods to save/load text into textArea
 
     void loadTextFromFile(File file) throws IOException {
         Path path = Paths.get(file.getPath());
